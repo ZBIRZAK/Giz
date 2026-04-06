@@ -259,42 +259,9 @@ function Hero() {
   );
 }
 
-function WhyProgram() {
-  return (
-    <section className="section section-alt why-program">
-      <div className="container two-col">
-        <div className="why-copy">
-          <h2>Pourquoi ce programme ?</h2>
-          <p>
-            Ce programme porté par le projet INEFF « Inclusion économique des femmes dans les secteurs du futur »
-            et le réseau We4She avec d’autres partenaires nationaux lance le présent Appel à Manifestation
-            d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre.
-          </p>
-          <div className="program-stat" aria-label="250 000 dhs par entreprise">
-            <div className="program-stat-main">
-              <span className="program-stat-label">
-                <span className="program-stat-amount">250 000 DHS</span>{' '}
-                <span className="program-stat-per">Par entreprise</span>
-              </span>
-            </div>
-          </div>
-        </div>
-        <figure className="section-media">
-          <img
-            src="/images/male-female-workers-high-visibility-vests-hard-hats-using-tablet-industrial-facility.jpg"
-            alt="Femme en casque de sécurité travaillant sur ordinateur"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      </div>
-    </section>
-  );
-}
-
 function Benefits() {
   return (
-    <section className="section">
+    <section className="section section-alt">
       <div className="container">
         <h2>Pourquoi c’est intéressant pour votre entreprise ?</h2>
         <div className="cards-3">
@@ -940,7 +907,6 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
-        <WhyProgram />
         <Benefits />
         <Eligibility />
         <ActionsAndPractical />
