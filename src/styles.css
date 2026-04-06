@@ -200,7 +200,7 @@ a {
 }
 
 .program-stat-number {
-  font-size: clamp(2rem, 4vw, 6rem);
+  font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1;
   font-weight: 800;
   color: var(--giz-red);
