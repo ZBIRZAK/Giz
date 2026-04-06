@@ -1,0 +1,96 @@
+import nodemailer from 'nodemailer';
+
+function asList(items) {
+  if (!Array.isArray(items) || items.length === 0) return 'Aucune';
+  return items.join(', ');
+}
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ ok: false, message: 'Method Not Allowed' });
+  }
+
+  const smtpHost = process.env.SMTP_HOST || 'smtp.mail.ovh.ca';
+  const smtpPort = Number(process.env.SMTP_PORT || 465);
+  const smtpSecure = String(process.env.SMTP_SECURE || 'true') !== 'false';
+  const smtpUser = process.env.SMTP_USER || 'z.zbir@box-com.com';
+  const smtpPass = process.env.SMTP_PASS || 'box-2021@AZbi';
+  const toEmail = process.env.TO_EMAIL || 'zakaria.zbir@gmail.com';
+
+  try {
+    const data = req.body || {};
+
+    const html = `
+      <h2>Nouvelle candidature AMI INEFF</h2>
+      <p><strong>Nom de l'entreprise:</strong> ${escapeHtml(data.companyName || '')}</p>
+      <p><strong>Secteur:</strong> ${escapeHtml(data.sector || '')}${data.sectorOther ? ` - ${escapeHtml(data.sectorOther)}` : ''}</p>
+      <p><strong>Nombre d'employés:</strong> ${escapeHtml(data.employees || '')}</p>
+      <p><strong>Ville principale:</strong> ${escapeHtml(data.city || '')}</p>
+      <hr />
+      <p><strong>Point focal:</strong> ${escapeHtml(data.focalName || '')}</p>
+      <p><strong>Fonction:</strong> ${escapeHtml(data.focalRole || '')}</p>
+      <p><strong>Email professionnel:</strong> ${escapeHtml(data.professionalEmail || '')}</p>
+      <p><strong>Téléphone:</strong> ${escapeHtml(data.phoneNumber || 'Non précisé')}</p>
+      <p><strong>Engagement direction:</strong> ${escapeHtml(data.directionCommitment || '')}</p>
+      <hr />
+      <p><strong>Pourquoi rejoindre:</strong><br/>${escapeHtml(data.joinReason || '')}</p>
+      <p><strong>Actions prioritaires:</strong> ${escapeHtml(asList(data.priorityActions))}${data.priorityActionsOther ? ` - ${escapeHtml(data.priorityActionsOther)}` : ''}</p>
+      <p><strong>Projet identifié:</strong><br/>${escapeHtml(data.existingProject || 'Non précisé')}</p>
+      <hr />
+      <p><strong>Ouvert au co-financement:</strong> ${escapeHtml(data.coFundingOpen || '')}</p>
+      <p><strong>Engagement final:</strong> ${data.finalCommitment ? 'Oui' : 'Non'}</p>
+    `;
+
+    const text = [
+      'Nouvelle candidature AMI INEFF',
+      `Nom entreprise: ${data.companyName || ''}`,
+      `Secteur: ${data.sector || ''}${data.sectorOther ? ` - ${data.sectorOther}` : ''}`,
+      `Nombre d'employés: ${data.employees || ''}`,
+      `Ville principale: ${data.city || ''}`,
+      `Point focal: ${data.focalName || ''}`,
+      `Fonction: ${data.focalRole || ''}`,
+      `Email professionnel: ${data.professionalEmail || ''}`,
+      `Téléphone: ${data.phoneNumber || 'Non précisé'}`,
+      `Engagement direction: ${data.directionCommitment || ''}`,
+      `Pourquoi rejoindre: ${data.joinReason || ''}`,
+      `Actions prioritaires: ${asList(data.priorityActions)}${data.priorityActionsOther ? ` - ${data.priorityActionsOther}` : ''}`,
+      `Projet identifié: ${data.existingProject || 'Non précisé'}`,
+      `Ouvert au co-financement: ${data.coFundingOpen || ''}`,
+      `Engagement final: ${data.finalCommitment ? 'Oui' : 'Non'}`,
+    ].join('\n');
+
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      auth: { user: smtpUser, pass: smtpPass },
+    });
+
+    await transporter.sendMail({
+      from: `"AMI INEFF Form" <${smtpUser}>`,
+      to: toEmail,
+      replyTo: data.professionalEmail || smtpUser,
+      subject: `Nouvelle candidature - ${data.companyName || 'Entreprise'}`,
+      text,
+      html,
+    });
+
+    return res.status(200).json({ ok: true });
+  } catch (error) {
+    console.error('Email send error:', error);
+    return res.status(500).json({
+      ok: false,
+      message: "L'envoi de la candidature a échoué. Merci de réessayer.",
+    });
+  }
+}
