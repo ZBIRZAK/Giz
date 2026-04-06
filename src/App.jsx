@@ -223,8 +223,10 @@ function WhyProgram() {
           </p>
           <div className="program-stat" aria-label="250 000 dhs par entreprise">
             <div className="program-stat-main">
-              <span className="program-stat-number">250 000</span>
-              <span className="program-stat-label">dhs par entreprise</span>
+              <span className="program-stat-label">
+                <span className="program-stat-amount">250 000 DHS</span>{' '}
+                <span className="program-stat-per">Par entreprise</span>
+              </span>
             </div>
           </div>
         </div>
@@ -278,7 +280,7 @@ function Eligibility() {
           <p className="eligibility-link-wrap para-pourq">
             Entreprises opérant dans les secteurs d’avenir ou stratégiques (
             <a href="https://amdie.gov.ma/guide-de-la-charte-dinvestissement/" target="_blank" rel="noreferrer">
-              liste des secteurs - Click
+              liste des secteurs
             </a>
             ), notamment :
           </p>
