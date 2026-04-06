@@ -87,7 +87,7 @@ a {
 
 .header-logo-item {
   width: 100%;
-  height: 44px;
+  height: 75px;
   object-fit: contain;
   object-position: center;
 }
@@ -938,7 +938,7 @@ h3{
   }
 
   .header-logo-item {
-    height: 44px;
+    height: 75px;
   }
 
   h1 {
@@ -989,7 +989,7 @@ h3{
   }
 
   .header-logo-item {
-    height: 38px;
+    height: 75px;
   }
 
   .hero h1 {
