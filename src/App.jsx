@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import gizLogo from './assets/giz-logo.svg';
 import logoGiz from './assets/images/logos/giz.svg';
 import logoWe4She from './assets/images/logos/we4she.svg';
 import logoEu from './assets/images/logos/EU.svg';
@@ -22,6 +21,21 @@ const fundedActions = [
   "Aménagement d'une crèche d'entreprise",
   'Programmes de leadership féminin',
   'Formations techniques ou certifiantes',
+];
+
+const heroSlides = [
+  {
+    src: '/images/woman-orange-safety-jacket-working-laptop.jpg',
+    alt: 'Professionnelle travaillant sur ordinateur dans un environnement industriel',
+  },
+  {
+    src: '/images/woman-wearing-safety-helmet-is-working-computer.jpg',
+    alt: 'Femme en casque de sécurité travaillant sur ordinateur',
+  },
+  {
+    src: '/images/male-female-workers-high-visibility-vests-hard-hats-using-tablet-industrial-facility.jpg',
+    alt: 'Équipe mixte utilisant une tablette dans un site industriel',
+  },
 ];
 
 const formSectorOptions = [
@@ -47,7 +61,7 @@ const formPriorityOptions = [
   'Leadership féminin',
   'Conditions de travail',
   'Formation',
-  'Infrastructures (ex : crèche)',
+  "Infrastructures (ex : crèche d'entreprise)",
   'Autre',
 ];
 
@@ -144,8 +158,8 @@ const initialFormState = {
   focalName: '',
   focalRole: '',
   professionalEmail: '',
+  phoneNumber: '',
   directionCommitment: '',
-  womenEmploymentChallenges: '',
   joinReason: '',
   priorityActions: [],
   priorityActionsOther: '',
@@ -166,8 +180,12 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <img className="brand-logo" src={gizLogo} alt="GIZ" />
-        <p className="brand-name">AMI INEFF x We4She</p>
+        <div className="header-logos" aria-label="Partenaires du programme">
+          <img className="header-logo-item" src={logoEldz} alt="ELdZ Maroc" loading="lazy" decoding="async" />
+          <img className="header-logo-item" src={logoEu} alt="Union européenne" loading="lazy" decoding="async" />
+          <img className="header-logo-item" src={logoGiz} alt="GIZ" loading="lazy" decoding="async" />
+          <img className="header-logo-item" src={logoWe4She} alt="We4She" loading="lazy" decoding="async" />
+        </div>
         {/* <Link className="header-link" to="/#contact">Contact</Link> */}
       </div>
     </header>
@@ -175,16 +193,24 @@ function Header() {
 }
 
 function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4200);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="hero section">
       <div className="container hero-grid">
         <div>
-          <p className="eyebrow">Égalité genre & performance RH</p>
-          <h1>Programme d’accompagnement financé</h1>
+          <p className="eyebrow">Appel à Manifestation d'IntérêtH</p>
+          {/* <h1>Programme d’accompagnement financé</h1> */}
           <p className="hero-sub-amount">
-            jusqu’à <strong className='nomber'>250 000 MAD</strong> par entreprise
-          </p>
-          <p className="lead">Pour entreprises des secteurs du futur au Maroc.</p>
+              Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre          </p>
+          {/* <p className="lead">Pour entreprises des secteurs du futur au Maroc.</p> */}
           <ul className="check-list">
             <li>Diagnostic stratégique</li>
             <li>Plan d’action opérationnel</li>
@@ -197,12 +223,29 @@ function Hero() {
         </div>
         <div className="hero-visual">
           <figure className="hero-media">
-            <img
-              src="/images/woman-wearing-safety-helmet-is-working-computer.jpg"
-              alt="Professionnelle travaillant sur ordinateur dans un environnement industriel"
-              loading="eager"
-              decoding="async"
-            />
+            <div className="hero-slider" aria-roledescription="carousel" aria-label="Images du programme">
+              {heroSlides.map((slide, index) => (
+                <div
+                  key={slide.src}
+                  className={`hero-slide ${index === activeSlide ? 'is-active' : ''}`}
+                  aria-hidden={index !== activeSlide}
+                >
+                  <img src={slide.src} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                </div>
+              ))}
+
+              <div className="hero-dots" aria-hidden="true">
+                {heroSlides.map((slide, index) => (
+                  <button
+                    key={`${slide.src}-dot`}
+                    type="button"
+                    className={`hero-dot ${index === activeSlide ? 'is-active' : ''}`}
+                    onClick={() => setActiveSlide(index)}
+                    aria-label={`Aller à l'image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </figure>
         </div>
       </div>
@@ -310,9 +353,12 @@ function ActionsAndPractical() {
       <div className="container split-grid">
         <article className="panel">
           <h2>Exemples d’actions financées</h2>
-          <ul className="plain-list">
-            {fundedActions.map((item) => (
-              <li key={item}>{item}</li>
+          <ul className="funded-grid">
+            {fundedActions.map((item, index) => (
+              <li key={item} className="funded-card">
+                <span className="funded-index">{String(index + 1).padStart(2, '0')}</span>
+                <p>{item}</p>
+              </li>
             ))}
           </ul>
         </article>
@@ -321,11 +367,10 @@ function ActionsAndPractical() {
           <h2>Informations pratiques</h2>
           <h3 className="icon-title"><span aria-hidden="true">📅</span>Calendrier</h3>
           <ul className="info-lines">
-            <li>Lancement: <strong>Le 08 avril 2026</strong></li>
             <li>Clôture: <strong>Le 30 mai 2026</strong></li>
           </ul>
           <h3 className="icon-title"><span aria-hidden="true">📍</span>Format du programme</h3>
-          <ul className="info-lines">
+          <ul className="info-lines info-lines-bulleted">
             <li>Accompagnement personnalisé</li>
             <li>Durée : environ 12 mois</li>
             <li>Interaction régulière avec experts</li>
@@ -356,8 +401,11 @@ function FaqCta() {
 
 function Contact() {
   const handleContact = () => {
-    window.location.href =
-      'mailto:Mohamed-amine.faiz@giz.de,afaf.aderdoun@giz.de?subject=Question%20sur%20l%27AMI%20INEFF';
+    const params = new URLSearchParams({
+      cc: 'afaf.aderdoun@giz.de',
+      subject: "Question sur l'AMI INEFF",
+    });
+    window.location.href = `mailto:Mohamed-amine.faiz@giz.de?${params.toString()}`;
   };
 
   return (
@@ -408,11 +456,7 @@ function Footer() {
       <div className="container footer-inner">
         <h3>À propos</h3>
         <p>
-          Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » est mis en œuvre par
-          la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ), en partenariat avec le Ministère de
-          l’Inclusion Économique, de la Petite Entreprise, de l’Emploi et des Compétences, et financé par le
-          Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) et l’Union
-          européenne.
+          <strong>WE4SHE est une</strong> association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
         </p>
         <p className="copyright">
           © 2026 GIZ - Tous droits réservés. Developed by{' '}
@@ -451,6 +495,10 @@ function CandidaturePage() {
 
   useEffect(() => {
     trackEvent('form_step_view', { step });
+  }, [step]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [step]);
 
   const setField = (name, value) => {
@@ -499,13 +547,7 @@ function CandidaturePage() {
     }
 
     if (step === 3) {
-      if (!formData.womenEmploymentChallenges.trim()) {
-        nextErrors.womenEmploymentChallenges = 'Ce champ est obligatoire.';
-      }
       if (!formData.joinReason.trim()) nextErrors.joinReason = 'Ce champ est obligatoire.';
-      if (formData.womenEmploymentChallenges.length > 300) {
-        nextErrors.womenEmploymentChallenges = '300 caractères maximum.';
-      }
       if (formData.joinReason.length > 300) {
         nextErrors.joinReason = '300 caractères maximum.';
       }
@@ -604,20 +646,20 @@ function CandidaturePage() {
           <section className="form-panel">
             {step === 0 ? (
               <div>
-                <p className="step-tag">Écran d’introduction</p>
+                {/* <p className="step-tag">ÉCRAN D’INTRO</p> */}
                 <p>
                   Dans le cadre du projet INEFF « Inclusion économique des femmes dans les secteurs du futur » en
                   partenariat avec le réseau We4She, le présent AMI vise à accompagner 10 entreprises marocaines
                   dans la promotion de l’égalité genre avec un appui technique pouvant aller jusqu’à 250 000 MAD.
                 </p>
-                <p><strong>Temps estimé :</strong> 3 à 5 minutes</p>
-                <p>Cliquez sur « Commencer » pour candidater.</p>
+                <p><strong>Temps estimé :</strong> 3–5 minutes</p>
+                <p>Cliquez sur “Commencer” pour candidater.</p>
               </div>
             ) : null}
 
             {step === 1 ? (
               <div>
-                <p className="step-tag">Section 1 - Informations sur votre entreprise</p>
+                <p className="step-tag">SECTION 1 — Informations sur votre entreprise</p>
                 <FormField label="Nom de l’entreprise" required error={errors.companyName} htmlFor="companyName">
                   <input
                     id="companyName"
@@ -685,7 +727,7 @@ function CandidaturePage() {
 
             {step === 2 ? (
               <div>
-                <p className="step-tag">Section 2 - Contact et gouvernance</p>
+                <p className="step-tag">SECTION 2 — Contact & gouvernance</p>
                 <FormField label="Nom du point focal" required error={errors.focalName} htmlFor="focalName">
                   <input
                     id="focalName"
@@ -720,6 +762,18 @@ function CandidaturePage() {
                   />
                 </FormField>
 
+                <FormField label="Numéro de téléphone" htmlFor="phoneNumber">
+                  <input
+                    id="phoneNumber"
+                    className="text-input"
+                    type="tel"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    value={formData.phoneNumber}
+                    onChange={(e) => setField('phoneNumber', e.target.value)}
+                  />
+                </FormField>
+
                 <FormField
                   label="Niveau d’engagement de la direction"
                   required
@@ -744,23 +798,7 @@ function CandidaturePage() {
 
             {step === 3 ? (
               <div>
-                <p className="step-tag">Section 3 - Diagnostic rapide</p>
-                <FormField
-                  label="Principaux défis concernant l’emploi des femmes"
-                  required
-                  hint={`${formData.womenEmploymentChallenges.length}/300 caractères`}
-                  error={errors.womenEmploymentChallenges}
-                  htmlFor="womenEmploymentChallenges"
-                >
-                  <textarea
-                    id="womenEmploymentChallenges"
-                    className="text-area"
-                    maxLength={300}
-                    value={formData.womenEmploymentChallenges}
-                    onChange={(e) => setField('womenEmploymentChallenges', e.target.value)}
-                  />
-                </FormField>
-
+                <p className="step-tag">SECTION 3 — Diagnostic rapide</p>
                 <FormField
                   label="Pourquoi souhaitez-vous rejoindre ce programme ?"
                   required
@@ -818,7 +856,7 @@ function CandidaturePage() {
 
             {step === 4 ? (
               <div>
-                <p className="step-tag">Section 4 - Capacité et engagement</p>
+                <p className="step-tag">SECTION 4 — Capacité & engagement</p>
                 <FormField
                   label="Êtes-vous ouvert à co-financer certaines actions ?"
                   required
@@ -843,7 +881,7 @@ function CandidaturePage() {
 
             {step === 5 ? (
               <div>
-                <p className="step-tag">Section 5 - Engagement final</p>
+                <p className="step-tag">SECTION 5 — Engagement final</p>
                 <FormField label="Confirmation d’engagement" required error={errors.finalCommitment}>
                   <label className="option-row">
                     <input
@@ -957,6 +995,12 @@ function FaqPage() {
 
 export default function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section'));

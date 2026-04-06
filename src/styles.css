@@ -71,23 +71,24 @@ a {
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   min-height: 72px;
 }
 
-.brand-logo {
-  width: 64px;
-  height: auto;
-  display: block;
+.header-logos {
+  width: min(100%, 740px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.brand-name {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-right: auto;
+.header-logo-item {
+  width: 100%;
+  height: 44px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .header-link {
@@ -135,10 +136,59 @@ a {
   height: 100%;
 }
 
-.hero-media img {
+.hero-slider {
+  position: relative;
+  height: 100%;
+  min-height: 420px;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity 0.65s ease, transform 1.1s ease;
+  pointer-events: none;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.hero-slide img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.hero-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  z-index: 2;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0;
+  cursor: pointer;
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-dot.is-active {
+  width: 20px;
+  background: var(--giz-red);
 }
 
 .section-media img {
@@ -269,7 +319,7 @@ h1 {
 
 .hero-sub-amount {
   margin: -0.15rem 0 0.9rem;
-  font-size: 1.2rem;
+  font-size: 1.08rem;
   color: var(--black);
   text-transform: capitalize;
 }
@@ -334,6 +384,31 @@ h3 {
   left: 0.45rem;
   color: var(--giz-red);
   font-weight: 700;
+}
+
+.hero-steps {
+  list-style: none;
+  margin: 1.1rem 0;
+  padding: 0;
+  counter-reset: hero-step;
+}
+
+.hero-steps li {
+  counter-increment: hero-step;
+  position: relative;
+  padding: 0.62rem 0 0.62rem 2.2rem;
+  border-bottom: 1px solid var(--line);
+  line-height: 1.45;
+}
+
+.hero-steps li::before {
+  content: counter(hero-step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  color: var(--giz-red);
+  font-weight: 800;
+  font-size: 0.95rem;
 }
 
 .plain-list li::before {
@@ -436,6 +511,56 @@ summary:focus-visible {
   gap: 1.2rem;
 }
 
+.funded-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.funded-card {
+  border: 1px solid #d8dde2;
+  border-left: 4px solid var(--giz-red);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  padding: 0.8rem 0.9rem 0.8rem 0.85rem;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.funded-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(16, 26, 38, 0.08);
+  border-color: #c9d0d7;
+}
+
+.funded-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: #ffe6e8;
+  color: var(--giz-red);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.funded-card p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1f2429;
+}
+
 .split-grid .panel h3.icon-title {
   gap: 0.72rem;
   margin-bottom: 0.60rem;
@@ -453,6 +578,10 @@ summary:focus-visible {
 
 .info-lines li {
   margin: 0.22rem 0;
+}
+
+.info-lines-bulleted {
+  list-style: disc;
 }
 
 .eligibility-section {
@@ -550,7 +679,8 @@ summary:focus-visible {
   border-bottom: 1px solid rgba(255, 255, 255, 0.24);
   padding: 0.8rem 0 0.8rem 3.2rem;
   position: relative;
-  font-size: 1.02rem;
+  font-size: 1.28rem;
+  line-height: 1.35;
   font-weight: 600;
 }
 
@@ -707,7 +837,7 @@ h3{
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 1.10rem;
 }
 
 .form-field {
@@ -808,6 +938,10 @@ h3{
     grid-template-columns: 1fr;
   }
 
+  .funded-grid {
+    grid-template-columns: 1fr;
+  }
+
   .eligibility-left,
   .eligibility-right {
     padding: 2rem 1.4rem;
@@ -830,13 +964,26 @@ h3{
     margin-inline: auto;
   }
 
+  .hero {
+    padding-top: 2.2rem;
+  }
+
+  .hero-grid {
+    gap: 1.2rem;
+  }
+
   .hero-media {
     height: auto;
   }
 
-  .hero-media img {
+  .hero-slider {
     height: auto;
+    min-height: 280px;
     aspect-ratio: 5 / 4;
+  }
+
+  .hero-slide img {
+    height: 100%;
   }
 
   .why-program .section-media {
@@ -851,6 +998,15 @@ h3{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .info-lines {
+    padding-left: 1.4rem;
+  }
+
+  .conditions-list li {
+    font-size: 1.08rem;
+    padding-left: 2.8rem;
+  }
+
   .section {
     padding: 3.4rem 0;
   }
@@ -859,9 +1015,12 @@ h3{
     min-height: 62px;
   }
 
-  .brand-logo {
-    width: 54px;
-    height: auto;
+  .header-logos {
+    gap: 0.5rem;
+  }
+
+  .header-logo-item {
+    height: 75px;
   }
 
   h1 {
@@ -892,6 +1051,60 @@ h3{
 
   body.has-sticky-cta {
     padding-bottom: 86px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(var(--max), calc(100% - 1.4rem));
+  }
+
+  .header-inner {
+    min-height: auto;
+    padding: 0.55rem 0;
+  }
+
+  .header-logos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .header-logo-item {
+    height: 75px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+    line-height: 1.2;
+  }
+
+  .hero-sub-amount,
+  .lead {
+    font-size: 1rem;
+  }
+
+  .hero-steps li {
+    padding-left: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-slider {
+    min-height: 240px;
+  }
+
+  .eligibility-list li {
+    font-size: 1.02rem;
+    padding-left: 1.7rem;
+  }
+
+  .conditions-list li {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .logo-placeholder img {
+    height: 74px;
   }
 }
 
