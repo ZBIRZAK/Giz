@@ -80,11 +80,15 @@ const faqItems = [
   },
   {
     q: 'Quels sont les critères les plus importants ?',
-    a: "Engagement réel de la direction, potentiel d'impact sur l'emploi féminin et capacité à mettre en œuvre des actions concrètes.",
+    a: [
+      'Engagement réel de la direction',
+      "Potentiel d'impact sur l'emploi féminin",
+      'Capacité à mettre en œuvre des actions concrètes',
+    ],
   },
   {
     q: 'Le financement d’un appui technique est-il garanti pour les entreprises sélectionnées ?',
-    a: "Oui. C’est un appui technique qui va jusqu’à 250 000 MAD par entreprise, avec deux conditions : réalisation d’un diagnostic et validation du plan d’action par la direction.",
+    a: "Oui. C’est un appui technique qui va jusqu’à 250 000 MAD par entreprise, sous deux conditions : réalisation d’un diagnostic et validation du plan d’action par la direction.",
   },
   {
     q: 'Quel est le montant du financement ?',
@@ -104,7 +108,10 @@ const faqItems = [
   },
   {
     q: 'Devons-nous mobiliser une équipe interne ?',
-    a: 'Oui: un point focal et un sponsor au niveau de la direction.',
+    a: {
+      intro: 'Oui.',
+      bullets: ['un point focal', 'un sponsor au niveau de la direction'],
+    },
   },
   {
     q: 'Est-ce que l’accompagnement est personnalisé ?',
@@ -191,8 +198,8 @@ function Hero() {
         <div className="hero-visual">
           <figure className="hero-media">
             <img
-              src="https://images.pexels.com/photos/6476566/pexels-photo-6476566.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Femme professionnelle travaillant dans un environnement technologique"
+              src="/images/woman-wearing-safety-helmet-is-working-computer.jpg"
+              alt="Professionnelle travaillant sur ordinateur dans un environnement industriel"
               loading="eager"
               decoding="async"
             />
@@ -204,26 +211,6 @@ function Hero() {
 }
 
 function WhyProgram() {
-  const [animatedCompanies, setAnimatedCompanies] = useState(0);
-
-  useEffect(() => {
-    const target = 10;
-    const durationMs = 1200;
-    const startTime = performance.now();
-    let rafId = 0;
-
-    const tick = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const value = Math.round(progress * target);
-      setAnimatedCompanies(value);
-      if (progress < 1) rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
   return (
     <section className="section section-alt why-program">
       <div className="container two-col">
@@ -234,18 +221,17 @@ function WhyProgram() {
             et le réseau We4She avec d’autres partenaires nationaux lance le présent Appel à Manifestation
             d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre.
           </p>
-          <div className="program-stat" aria-label="10 entreprises et INEFF">
+          <div className="program-stat" aria-label="250 000 dhs par entreprise">
             <div className="program-stat-main">
-              <span className="program-stat-number" aria-live="polite">{animatedCompanies}</span>
-              <span className="program-stat-label">entreprises</span>
+              <span className="program-stat-number">250 000</span>
+              <span className="program-stat-label">dhs par entreprise</span>
             </div>
-            <div className="program-stat-side">INEFF</div>
           </div>
         </div>
         <figure className="section-media">
           <img
-            src="https://images.pexels.com/photos/21405533/pexels-photo-21405533.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Professionnelle en environnement de travail numérique"
+            src="/images/male-female-workers-high-visibility-vests-hard-hats-using-tablet-industrial-facility.jpg"
+            alt="Femme en casque de sécurité travaillant sur ordinateur"
             loading="lazy"
             decoding="async"
           />
@@ -259,22 +245,22 @@ function Benefits() {
   return (
     <section className="section">
       <div className="container">
-        <h2>Pourquoi c’est intéressant pour votre entreprise</h2>
+        <h2>Pourquoi c’est intéressant pour votre entreprise ?</h2>
         <div className="cards-3">
           <article className="card">
             <img className="benefit-icon" src={iconDiagnostic} alt="" aria-hidden="true" />
             <h3>Accédez à un diagnostic stratégique</h3>
-            <p>Comprenez précisément vos freins en matière de recrutement, rétention et promotion des femmes.</p>
+            <p className='para-pourq'>Comprenez précisément vos freins en matière de recrutement, rétention et promotion des femmes.</p>
           </article>
           <article className="card">
             <img className="benefit-icon" src={iconTech} alt="" aria-hidden="true" />
             <h3>Bénéficiez d’un appui technique direct</h3>
-            <p>Jusqu’à 250 000 MAD d’appui technique pour mettre en œuvre des actions concrètes visant la promotion de l’égalité genre.</p>
+            <p className='para-pourq'>Jusqu’à <strong>250 000 MAD</strong> d’appui technique pour mettre en œuvre des actions concrètes visant la promotion de l’égalité genre.</p>
           </article>
           <article className="card">
             <img className="benefit-icon" src={iconPosition} alt="" aria-hidden="true" />
             <h3>Renforcez votre positionnement ESG</h3>
-            <p>Accès à de l’expertise et intégration d’un réseau international.</p>
+            <p className='para-pourq'>Accès à une expertise et intégration d’un réseau international.</p>
           </article>
         </div>
       </div>
@@ -289,7 +275,7 @@ function Eligibility() {
         <article className="eligibility-left">
           <h2>À qui s’adresse le programme ?</h2>
           <h3>Entreprises éligibles</h3>
-          <p className="eligibility-link-wrap">
+          <p className="eligibility-link-wrap para-pourq">
             Entreprises opérant dans les secteurs d’avenir ou stratégiques (
             <a href="https://amdie.gov.ma/guide-de-la-charte-dinvestissement/" target="_blank" rel="noreferrer">
               liste des secteurs - Click
@@ -306,7 +292,7 @@ function Eligibility() {
         <article className="eligibility-right">
           <h3>Conditions principales</h3>
           <ul className="conditions-list">
-            <li>Minimum 20 employés</li>
+            <li>Minimum <strong>20 employés</strong></li>
             <li>Engagement de la direction</li>
             <li>Désignation d’un référent interne</li>
           </ul>
@@ -331,14 +317,18 @@ function ActionsAndPractical() {
 
         <article className="panel">
           <h2>Informations pratiques</h2>
-          <h3>Calendrier</h3>
-          <p>Lancement: 08 avril 2026</p>
-          <p>Clôture: 30 mai 2026</p>
-          <h3>Format du programme</h3>
-          <p>Accompagnement personnalisé</p>
-          <p>Durée : environ 12 mois</p>
-          <p>Interaction régulière avec experts</p>
-          <h3>Ce que vous devez soumettre</h3>
+          <h3 className="icon-title"><span aria-hidden="true">📅</span>Calendrier</h3>
+          <ul className="info-lines">
+            <li>Lancement: <strong>Le 08 avril 2026</strong></li>
+            <li>Clôture: <strong>Le 30 mai 2026</strong></li>
+          </ul>
+          <h3 className="icon-title"><span aria-hidden="true">📍</span>Format du programme</h3>
+          <ul className="info-lines">
+            <li>Accompagnement personnalisé</li>
+            <li>Durée : environ 12 mois</li>
+            <li>Interaction régulière avec experts</li>
+          </ul>
+          <h3 className="icon-title"><span aria-hidden="true">📄</span>Ce que vous devez soumettre</h3>
           <Link className="btn btn-primary" to="/candidature" onClick={() => trackEvent('cta_click', { source: 'infos_pratiques' })}>
             Formulaire de candidature
           </Link>
@@ -378,16 +368,16 @@ function Contact() {
         </button>
         <div className="partner-logos" aria-label="Partenaires">
           <div className="logo-placeholder">
-            <img src={logoGiz} alt="GIZ" loading="lazy" decoding="async" />
-          </div>
-          <div className="logo-placeholder">
-            <img src={logoWe4She} alt="We4She" loading="lazy" decoding="async" />
+            <img src={logoEldz} alt="ELdZ Maroc" loading="lazy" decoding="async" />
           </div>
           <div className="logo-placeholder">
             <img src={logoEu} alt="Union européenne" loading="lazy" decoding="async" />
           </div>
           <div className="logo-placeholder">
-            <img src={logoEldz} alt="ELdZ Maroc" loading="lazy" decoding="async" />
+            <img src={logoGiz} alt="GIZ" loading="lazy" decoding="async" />
+          </div>
+          <div className="logo-placeholder">
+            <img src={logoWe4She} alt="We4She" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -929,7 +919,26 @@ function FaqPage() {
             {faqItems.map((item) => (
               <details key={item.q} className="faq-item">
                 <summary>{item.q}</summary>
-                <p>{item.a}</p>
+                {Array.isArray(item.a) ? (
+                  <ul className="faq-bullets">
+                    {item.a.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                ) : item.a && typeof item.a === 'object' ? (
+                  <>
+                    {item.a.intro ? <p>{item.a.intro}</p> : null}
+                    {Array.isArray(item.a.bullets) ? (
+                      <ul className="faq-bullets">
+                        {item.a.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                ) : (
+                  <p>{item.a}</p>
+                )}
               </details>
             ))}
           </div>

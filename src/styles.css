@@ -36,6 +36,10 @@ a {
   margin-inline: auto;
 }
 
+.para-pourq{
+  margin-top: 5px;
+}
+
 .section {
   padding: 4.5rem 0;
   opacity: 0;
@@ -100,12 +104,13 @@ a {
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   gap: 2rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .hero-visual {
   width: min(100%, 540px);
   justify-self: end;
+  align-self: stretch;
 }
 
 .hero-media,
@@ -126,8 +131,12 @@ a {
   display: block;
 }
 
+.hero-media {
+  height: 100%;
+}
+
 .hero-media img {
-  aspect-ratio: 5 / 4;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -191,7 +200,7 @@ a {
 }
 
 .program-stat-number {
-  font-size: clamp(2rem, 8vw, 6rem);
+  font-size: clamp(2rem, 5vw, 6rem);
   line-height: 1;
   font-weight: 800;
   color: var(--giz-red);
@@ -232,7 +241,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.76rem;
+  font-size: 1rem;
 }
 
 h1,
@@ -255,7 +264,8 @@ h1 {
 .hero-sub-amount {
   margin: -0.15rem 0 0.9rem;
   font-size: 1.2rem;
-  color: var(--muted);
+  color: var(--black);
+  text-transform: capitalize;
 }
 
 .nomber{
@@ -294,7 +304,7 @@ h3 {
 
 .lead {
   font-size: 1.08rem;
-  color: var(--muted);
+  color: var(--black);
   /* max-width: 58ch; */
 }
 
@@ -411,13 +421,32 @@ summary:focus-visible {
   height: 48px;
   object-fit: contain;
   display: block;
-  margin-bottom: 0.65rem;
+  margin-bottom: 1rem;
 }
 
 .split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
+}
+
+.split-grid .panel h3.icon-title {
+  gap: 0.72rem;
+  margin-bottom: 0.60rem;
+}
+
+.split-grid .panel h3.icon-title + p {
+  margin-top: 0;
+}
+
+.info-lines {
+  list-style: none;
+  margin: 0.06rem 0 0.7rem;
+  padding-left: 2.5rem;
+}
+
+.info-lines li {
+  margin: 0.22rem 0;
 }
 
 .eligibility-section {
@@ -472,7 +501,7 @@ summary:focus-visible {
 }
 
 .eligibility-link-wrap {
-  margin: -0.45rem 0 1rem;
+  margin: 0.45rem 0 1rem;
 }
 
 .eligibility-link-wrap a {
@@ -487,10 +516,10 @@ summary:focus-visible {
 }
 
 .eligibility-list li {
-  border-bottom: 1px solid #d9d9d8;
-  padding: 1.05rem 0 1.05rem 2rem;
-  position: relative;
-  font-size: 1.15rem;
+    border-bottom: 1px solid #d9d9d8;
+    padding: 0.6rem 0 0.50rem 2rem;
+    position: relative;
+    font-size: 1.15rem;
 }
 
 .eligibility-list li::before {
@@ -528,6 +557,10 @@ summary:focus-visible {
   font-weight: 800;
   line-height: 1;
   color: rgba(255, 255, 255, 0.55);
+}
+
+h3{
+  margin: 0 0 0.5rem;
 }
 
 .faq-cta {
@@ -592,6 +625,17 @@ summary:focus-visible {
   margin-bottom: 0;
   color: #2d2d2d;
   line-height: 1.7;
+}
+
+.faq-bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: #2d2d2d;
+}
+
+.faq-bullets li {
+  margin: 0.28rem 0;
+  line-height: 1.65;
 }
 
 .faq-actions {
@@ -778,6 +822,15 @@ summary:focus-visible {
     max-width: 640px;
     justify-self: stretch;
     margin-inline: auto;
+  }
+
+  .hero-media {
+    height: auto;
+  }
+
+  .hero-media img {
+    height: auto;
+    aspect-ratio: 5 / 4;
   }
 
   .why-program .section-media {
