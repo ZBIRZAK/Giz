@@ -206,11 +206,13 @@ function Hero() {
     <section className="hero section">
       <div className="container hero-grid">
         <div>
-          <h1 className="eyebrow">Appel à Manifestation d'Intérêt</h1>
-          {/* <h1>Programme d’accompagnement financé</h1> */}
-          <p className="hero-sub-amount">
-              Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre          </p>
-          {/* <p className="lead">Pour entreprises des secteurs du futur au Maroc.</p> */}
+          {/* <p className="eyebrow">Programme d’accompagnement financé</p> */}
+          <h1>Appel à Manifestation d'Intérêt</h1>
+          <p className="hero-intro">
+            Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She
+            lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la
+            promotion de l’égalité genre.
+          </p>
           <ol className="hero-steps">
             <li>
               <strong>Design :</strong> diagnostic stratégique et accompagnement sur mesure pour identifier vos leviers de performance pour la promotion de l’égalité genre

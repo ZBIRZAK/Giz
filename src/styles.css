@@ -1,10 +1,11 @@
 :root {
-  --giz-red: #fc4d32;;
+  --giz-red: #fc4d32;
   --text: #1c1c1c;
   --muted: #5e5e5e;
   --line: #d9dde1;
   --surface: #f4f6f7;
   --white: #ffffff;
+  --black: #1c1c1c;
   --max: 1160px;
   --radius: 4px;
 }
@@ -108,6 +109,10 @@ a {
   align-items: stretch;
 }
 
+.hero-grid > div:first-child {
+  max-width: 66ch;
+}
+
 .hero-visual {
   width: min(100%, 540px);
   justify-self: end;
@@ -199,13 +204,13 @@ a {
 
 
 .eyebrow {
-    display: inline-block;
-    margin: 0 0 0.9rem;
-    color: #000000;
-    font-weight: 700;
-    /* text-transform: uppercase; */
-    /* letter-spacing: 0.05em; */
-    font-size: 1rem;
+  display: inline-block;
+  margin: 0 0 0.7rem;
+  color: var(--giz-red);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
 }
 
 h1,
@@ -228,7 +233,7 @@ h1 {
 .hero-sub-amount {
   margin: -0.15rem 0 0.9rem;
   font-size: 1.08rem;
-  color: var(--black);
+  color: var(--text);
   text-transform: capitalize;
 }
 
@@ -268,8 +273,15 @@ h3 {
 
 .lead {
   font-size: 1.08rem;
-  color: var(--black);
+  color: var(--text);
   /* max-width: 58ch; */
+}
+
+.hero-intro {
+  margin: 0 0 0.95rem;
+  color: #31363c;
+  font-size: 1.03rem;
+  line-height: 1.72;
 }
 
 .check-list,
@@ -393,6 +405,10 @@ summary:focus-visible {
   padding: 1.2rem;
 }
 
+.card {
+  border-radius: 6px;
+}
+
 .two-col {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -514,6 +530,9 @@ summary:focus-visible {
 .eligibility-right {
   background: #fc4d32;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .panel-eyebrow {
@@ -538,7 +557,7 @@ summary:focus-visible {
 .eligibility-right h3 {
   font-size: clamp(1.4rem, 2vw, 2rem);
   line-height: 1.25;
-  margin-top: 6.9rem;
+  margin-top: 0;
   margin-bottom: 0.9rem;
   color: #fff;
 }
@@ -587,7 +606,7 @@ summary:focus-visible {
   border-bottom: 1px solid rgba(255, 255, 255, 0.24);
   padding: 0.8rem 0 0.8rem 3.2rem;
   position: relative;
-  font-size: 1.28rem;
+  font-size: 1.18rem;
   line-height: 1.35;
   font-weight: 600;
 }
@@ -919,7 +938,7 @@ h3{
   }
 
   .header-logo-item {
-    height: 75px;
+    height: 44px;
   }
 
   h1 {
@@ -970,12 +989,17 @@ h3{
   }
 
   .header-logo-item {
-    height: 75px;
+    height: 38px;
   }
 
   .hero h1 {
     font-size: clamp(1.45rem, 7vw, 1.9rem);
     line-height: 1.2;
+  }
+
+  .hero-intro {
+    font-size: 0.98rem;
+    line-height: 1.62;
   }
 
   .hero-sub-amount,
