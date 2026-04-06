@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AMI INEFF x We4She">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f6f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="18" fill="#e30613"/>
+  <text x="70" y="225" fill="#e30613" font-family="Noto, Arial, sans-serif" font-size="34" font-weight="700">AMI INEFF x We4She</text>
+  <text x="70" y="300" fill="#1c1c1c" font-family="Noto, Arial, sans-serif" font-size="56" font-weight="700">
+    Programme d’accompagnement financé
+  </text>
+  <text x="70" y="360" fill="#1c1c1c" font-family="Noto, Arial, sans-serif" font-size="44" font-weight="700">
+    Jusqu’à 250 000 MAD par entreprise
+  </text>
+  <text x="70" y="430" fill="#5e5e5e" font-family="Noto, Arial, sans-serif" font-size="30">
+    Égalité genre & performance RH pour entreprises au Maroc
+  </text>
+</svg>
