@@ -1,5 +1,5 @@
 :root {
-  --giz-red: #e30613;
+  --giz-red: #fc4d32;;
   --text: #1c1c1c;
   --muted: #5e5e5e;
   --line: #d9dde1;
@@ -604,7 +604,7 @@ summary:focus-visible {
 }
 
 .eligibility-right {
-  background: #e30613;
+  background: #fc4d32;
   color: #fff;
 }
 
