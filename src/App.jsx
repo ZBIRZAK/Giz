@@ -206,7 +206,7 @@ function Hero() {
     <section className="hero section">
       <div className="container hero-grid">
         <div>
-          <p className="eyebrow">Appel à Manifestation d'IntérêtH</p>
+          <h1 className="eyebrow">Appel à Manifestation d'Intérêt</h1>
           {/* <h1>Programme d’accompagnement financé</h1> */}
           <p className="hero-sub-amount">
               Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre          </p>

@@ -291,13 +291,13 @@ a {
 }
 
 .eyebrow {
-  display: inline-block;
-  margin: 0 0 0.9rem;
-  color: var(--giz-red);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 1rem;
+    display: inline-block;
+    margin: 0 0 0.9rem;
+    color: #000000;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    /* letter-spacing: 0.05em; */
+    font-size: 1rem;
 }
 
 h1,
@@ -313,7 +313,7 @@ h1 {
 }
 
 .hero h1 {
-  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.8rem);
   /* max-width: 24ch; */
 }
 
