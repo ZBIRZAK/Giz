@@ -983,7 +983,7 @@ function FaqPage() {
             ))}
           </div>
           <div className="faq-actions">
-            <Link className="btn btn-outline" to="/">Retour à la page principale</Link>
+            {/* <Link className="btn btn-outline" to="/">Retour à la page principale</Link> */}
             <Link className="btn btn-primary" to="/candidature">Accéder au formulaire</Link>
           </div>
         </div>
