@@ -36,6 +36,15 @@ function asList(items) {
   return items.join(', ');
 }
 
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 app.post('/api/candidature', async (req, res) => {
   const startedAt = Date.now();
   const requestId = req.requestId;
@@ -44,22 +53,22 @@ app.post('/api/candidature', async (req, res) => {
 
     const html = `
       <h2>Nouvelle candidature AMI INEFF</h2>
-      <p><strong>Nom de l'entreprise:</strong> ${data.companyName || ''}</p>
-      <p><strong>Secteur:</strong> ${data.sector || ''}${data.sectorOther ? ` - ${data.sectorOther}` : ''}</p>
-      <p><strong>Nombre d'employés:</strong> ${data.employees || ''}</p>
-      <p><strong>Ville principale:</strong> ${data.city || ''}</p>
+      <p><strong>Nom de l'entreprise:</strong> ${escapeHtml(data.companyName || '')}</p>
+      <p><strong>Secteur:</strong> ${escapeHtml(data.sector || '')}${data.sectorOther ? ` - ${escapeHtml(data.sectorOther)}` : ''}</p>
+      <p><strong>Nombre d'employés:</strong> ${escapeHtml(data.employees || '')}</p>
+      <p><strong>Ville principale:</strong> ${escapeHtml(data.city || '')}</p>
       <hr />
-      <p><strong>Point focal:</strong> ${data.focalName || ''}</p>
-      <p><strong>Fonction:</strong> ${data.focalRole || ''}</p>
-      <p><strong>Email professionnel:</strong> ${data.professionalEmail || ''}</p>
-      <p><strong>Engagement direction:</strong> ${data.directionCommitment || ''}</p>
+      <p><strong>Point focal:</strong> ${escapeHtml(data.focalName || '')}</p>
+      <p><strong>Fonction:</strong> ${escapeHtml(data.focalRole || '')}</p>
+      <p><strong>Email professionnel:</strong> ${escapeHtml(data.professionalEmail || '')}</p>
+      <p><strong>Téléphone:</strong> ${escapeHtml(data.phoneNumber || 'Non précisé')}</p>
+      <p><strong>Engagement direction:</strong> ${escapeHtml(data.directionCommitment || '')}</p>
       <hr />
-      <p><strong>Défis emploi femmes:</strong><br/>${data.womenEmploymentChallenges || ''}</p>
-      <p><strong>Pourquoi rejoindre:</strong><br/>${data.joinReason || ''}</p>
-      <p><strong>Actions prioritaires:</strong> ${asList(data.priorityActions)}${data.priorityActionsOther ? ` - ${data.priorityActionsOther}` : ''}</p>
-      <p><strong>Projet identifié:</strong><br/>${data.existingProject || 'Non précisé'}</p>
+      <p><strong>Pourquoi rejoindre:</strong><br/>${escapeHtml(data.joinReason || '')}</p>
+      <p><strong>Actions prioritaires:</strong> ${escapeHtml(asList(data.priorityActions))}${data.priorityActionsOther ? ` - ${escapeHtml(data.priorityActionsOther)}` : ''}</p>
+      <p><strong>Projet identifié:</strong><br/>${escapeHtml(data.existingProject || 'Non précisé')}</p>
       <hr />
-      <p><strong>Ouvert au co-financement:</strong> ${data.coFundingOpen || ''}</p>
+      <p><strong>Ouvert au co-financement:</strong> ${escapeHtml(data.coFundingOpen || '')}</p>
       <p><strong>Engagement final:</strong> ${data.finalCommitment ? 'Oui' : 'Non'}</p>
     `;
 
@@ -72,8 +81,8 @@ app.post('/api/candidature', async (req, res) => {
       `Point focal: ${data.focalName || ''}`,
       `Fonction: ${data.focalRole || ''}`,
       `Email professionnel: ${data.professionalEmail || ''}`,
+      `Téléphone: ${data.phoneNumber || 'Non précisé'}`,
       `Engagement direction: ${data.directionCommitment || ''}`,
-      `Défis emploi femmes: ${data.womenEmploymentChallenges || ''}`,
       `Pourquoi rejoindre: ${data.joinReason || ''}`,
       `Actions prioritaires: ${asList(data.priorityActions)}${data.priorityActionsOther ? ` - ${data.priorityActionsOther}` : ''}`,
       `Projet identifié: ${data.existingProject || 'Non précisé'}`,

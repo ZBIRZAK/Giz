@@ -3,7 +3,8 @@ import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import logoGiz from './assets/images/logos/giz.svg';
 import logoWe4She from './assets/images/logos/we4she.svg';
 import logoEu from './assets/images/logos/EU.svg';
-import logoEldz from './assets/images/logos/ELdZ_Maro_cmyk_arab.svg';
+import logoEldz from './assets/images/logos/ELdZ_Maro_cmyk_arab.webp';
+
 import iconDiagnostic from './assets/icones/diagnostic.svg';
 import iconTech from './assets/icones/tech.svg';
 import iconPosition from './assets/icones/position.svg';
@@ -366,7 +367,13 @@ function FaqCta() {
       <div className="container faq-cta">
         <h2>Questions fréquentes (FAQ)</h2>
         <p>Retrouvez toutes les réponses détaillées sur une page dédiée.</p>
-        <Link className="btn btn-primary" to="/faq" onClick={() => trackEvent('cta_click', { source: 'faq_preview' })}>
+        <Link
+          className="btn btn-primary"
+          to="/faq"
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackEvent('cta_click', { source: 'faq_preview' })}
+        >
           Consulter la FAQ complète
         </Link>
       </div>
