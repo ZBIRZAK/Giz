@@ -211,11 +211,17 @@ function Hero() {
           <p className="hero-sub-amount">
               Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la promotion de l’égalité genre          </p>
           {/* <p className="lead">Pour entreprises des secteurs du futur au Maroc.</p> */}
-          <ul className="check-list">
-            <li>Diagnostic stratégique</li>
-            <li>Plan d’action opérationnel</li>
-            <li>Appui technique financé</li>
-          </ul>
+          <ol className="hero-steps">
+            <li>
+              <strong>Design :</strong> diagnostic stratégique et accompagnement sur mesure pour identifier vos leviers de performance pour la promotion de l’égalité genre
+            </li>
+            <li>
+              <strong>Execute :</strong> feuille de route opérationnelle et appui technique jusqu’à 250 000 MAD pour implémenter des actions à fort impact
+            </li>
+            <li>
+              <strong>Scale :</strong> dynamique entre pairs et cadre structuré pour ancrer des résultats mesurables et durables
+            </li>
+          </ol>
           <p className="deadline">Candidatures ouvertes jusqu’au <strong>30 mai 2026</strong>.</p>
           <Link className="btn btn-primary" to="/candidature" onClick={() => trackEvent('cta_click', { source: 'hero' })}>
             Postuler maintenant
