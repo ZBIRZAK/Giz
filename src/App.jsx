@@ -410,7 +410,7 @@ function FaqCta() {
 function Contact() {
   const handleContact = () => {
     window.location.href =
-      'mailto:Mohamed-amine.faiz@giz.de?cc=afaf.aderdoun@giz.de&subject=Demande d’information – AMI INEFF x We4She';
+      'mailto:Mohamed-amine.faiz@giz.de,afaf.aderdoun@giz.de?subject=Demande d’information – AMI INEFF x We4She';
   };
 
   return (
