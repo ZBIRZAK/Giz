@@ -8,6 +8,10 @@ import logoEldz from './assets/images/logos/ELdZ_Maro_cmyk_arab.webp';
 import iconDiagnostic from './assets/icones/diagnostic.svg';
 import iconTech from './assets/icones/tech.svg';
 import iconPosition from './assets/icones/position.svg';
+import iconFundedRecrutement from './assets/icones/Recrutement.png';
+import iconFundedAmenagement from './assets/icones/Amenagement.png';
+import iconFundedFormations from './assets/icones/Formations.png';
+import iconFundedProgrammes from './assets/icones/Programmes.png';
 
 const eligibleSectors = [
   'Industrie',
@@ -325,52 +329,22 @@ function Eligibility() {
 
 function FundedActionIcon({ type }) {
   if (type === 'recrutement') {
-    return (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M20 30c4.2 0 7.5-3.5 7.5-7.8S24.2 14.5 20 14.5s-7.5 3.5-7.5 7.8S15.8 30 20 30Z" />
-        <path d="M44 30c4.2 0 7.5-3.5 7.5-7.8S48.2 14.5 44 14.5s-7.5 3.5-7.5 7.8S39.8 30 44 30Z" />
-        <path d="M32 34.5c5.3 0 9.5-4.3 9.5-9.7S37.3 15 32 15s-9.5 4.3-9.5 9.8 4.2 9.7 9.5 9.7Z" />
-        <path d="M8.5 49.5v-3.2c0-5.7 4.3-10.3 9.7-10.3h3.6" />
-        <path d="M55.5 49.5v-3.2c0-5.7-4.3-10.3-9.7-10.3h-3.6" />
-        <path d="M20.5 49.5v-3.8c0-6.6 5.1-11.9 11.5-11.9s11.5 5.3 11.5 11.9v3.8" />
-      </svg>
-    );
+    return <img src={iconFundedRecrutement} alt="" aria-hidden="true" />;
   }
 
   if (type === 'creche') {
-    return (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M12 45V28.5a2.5 2.5 0 0 1 2.5-2.5h35a2.5 2.5 0 0 1 2.5 2.5V45" />
-        <path d="M8 45h48" />
-        <path d="M12 37h40" />
-        <path d="M22 37v8M30 37v8M38 37v8" />
-        <path d="M32 11v9" />
-        <path d="M32 20c-2.2 0-4 1.9-4 4.2S29.8 28.5 32 28.5s4-1.9 4-4.3S34.2 20 32 20Z" />
-        <path d="M39.5 9.5v7" />
-        <path d="M39.5 16.5c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3Z" />
-      </svg>
-    );
+    return <img src={iconFundedAmenagement} alt="" aria-hidden="true" />;
+  }
+
+  if (type === 'formation') {
+    return <img src={iconFundedFormations} alt="" aria-hidden="true" />;
   }
 
   if (type === 'leadership') {
-    return (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M16 27.5c4 0 7.2-3.4 7.2-7.5S20 12.5 16 12.5 8.8 15.9 8.8 20s3.2 7.5 7.2 7.5Z" />
-        <path d="M8.8 49.5v-6.8c0-5 3.2-9 7.2-9 3.9 0 7.1 4 7.1 9v6.8" />
-        <path d="M25 21h14M25 29h20M41 21l5-4.5" />
-        <path d="M25 37h15M40 37l4-4" />
-      </svg>
-    );
+    return <img src={iconFundedProgrammes} alt="" aria-hidden="true" />;
   }
 
-  return (
-    <svg viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M13 12.5h30a3 3 0 0 1 3 3V44a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V15.5a3 3 0 0 1 3-3Z" />
-      <path d="M18 22h20M18 29h16M18 36h12" />
-      <path d="M50 34.5c4.1 0 7.5 3.4 7.5 7.5S54.1 49.5 50 49.5 42.5 46.1 42.5 42s3.4-7.5 7.5-7.5Z" />
-      <path d="m46.5 42 2.4 2.5 4.7-4.8" />
-    </svg>
-  );
+  return <img src={iconFundedFormations} alt="" aria-hidden="true" />;
 }
 
 function ActionsAndPractical() {
