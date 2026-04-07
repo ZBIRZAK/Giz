@@ -444,23 +444,27 @@ summary:focus-visible {
   gap: 0.7rem;
 }
 
+.funded-panel {
+  background: #ffffff;
+  border-color: #d8d9db;
+  border-top: 6px solid #fc4d32;
+}
+
 .funded-card {
-  border: 1px solid #d8dde2;
-  border-left: 4px solid var(--giz-red);
-  border-radius: 6px;
-  background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
-  padding: 0.8rem 0.9rem 0.8rem 0.85rem;
-  min-height: 112px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border: 1px solid #dbdcde;
+    border-left: 6px solid #fc4d32;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 0.85rem 1rem;
+    min-height: 136px;
+    display: grid;
+  grid-template-columns: 62px 1fr;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .funded-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(16, 26, 38, 0.08);
-  border-color: #c9d0d7;
+  border-color: #cfd0d4;
 }
 
 .funded-index {
@@ -477,11 +481,30 @@ summary:focus-visible {
   letter-spacing: 0.02em;
 }
 
+.funded-icon {
+  width: 62px;
+  height: 62px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d1f23;
+}
+
+.funded-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .funded-card p {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: 0.98rem;
+  line-height: 1.32;
+  max-width: 22ch;
   color: #1f2429;
 }
 
@@ -506,6 +529,34 @@ summary:focus-visible {
 
 .info-lines-bulleted {
   list-style: disc;
+}
+
+@media (min-width: 981px) {
+  .split-grid {
+    gap: 2.4rem;
+  }
+
+  .split-grid .panel {
+    padding: 2.9rem 2.35rem;
+  }
+
+  .split-grid .panel h2 {
+    margin-bottom: 1.35rem;
+  }
+
+  .split-grid .panel h3.icon-title {
+    margin-top: 0.7rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .split-grid .panel li,
+  .split-grid .panel p {
+    line-height: 1.88;
+  }
+
+  .split-grid .info-lines li {
+    margin: 0.86rem 0;
+  }
 }
 
 .eligibility-section {
@@ -867,6 +918,11 @@ h3{
 
   .funded-grid {
     grid-template-columns: 1fr;
+  }
+
+  .funded-icon {
+    width: 66px;
+    height: 66px;
   }
 
   .eligibility-left,
