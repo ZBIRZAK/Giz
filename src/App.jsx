@@ -210,7 +210,7 @@ function Hero() {
           {/* <p className="eyebrow">Programme d’accompagnement financé</p> */}
           <h1>Appel à Manifestation d'Intérêt</h1>
           <p className="hero-intro">
-            Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She
+            <strong>Le projet INEFF</strong> « Inclusion économique des femmes dans les secteurs du futur » et le réseau We4She
             lancent un Appel à Manifestation d’Intérêt pour accompagner 10 entreprises des secteurs du futur dans la
             promotion de l’égalité genre.
           </p>
@@ -436,21 +436,24 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
+        <h3>À propos du projet INEFF</h3>
+        <p>
+          <strong>Le projet INEFF</strong> « Inclusion économique des femmes dans les secteurs du futur » est mis en œuvre par la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ), en partenariat avec le Ministère de l’Inclusion Économique, de la Petite Entreprise, de l’Emploi et des Compétences, et financé par le Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) et l’Union Européenne.
+        </p>
+        
         <h3>À propos de WE4SHE</h3>
         <p>
           <strong>WE4SHE est une</strong> association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
         </p>
-        <h3>À propos du projet INEFF</h3>
-        <p>
-          Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » est mis en œuvre par la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ), en partenariat avec le Ministère de l’Inclusion Économique, de la Petite Entreprise, de l’Emploi et des Compétences, et financé par le Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) et l’Union Européenne.
-        </p>
-        <p className="copyright">
+
+                <p className="copyright">
           © 2026 GIZ - Tous droits réservés. Developed by{' '}
           <a href="https://box-com.com/" target="_blank" rel="noreferrer">
             Box-com.com
           </a>
           .
         </p>
+        
       </div>
     </footer>
   );
