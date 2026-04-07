@@ -294,7 +294,7 @@ function Eligibility() {
     <section className="section eligibility-section">
       <div className="container eligibility-showcase">
         <article className="eligibility-left">
-          <h2>À qui s’adresse le programme ?</h2>
+          <h2>À qui s’adresse le programme&nbsp;?</h2>
           <h3>Entreprises éligibles</h3>
           <p className="eligibility-link-wrap para-pourq">
             Entreprises opérant dans les secteurs d’avenir ou stratégiques (
