@@ -355,6 +355,9 @@ h3 {
   border-radius: var(--radius);
   text-decoration: none;
   padding: 0.76rem 1.2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.2;
   font-weight: 700;
   cursor: pointer;
   transition: 0.2s ease;
