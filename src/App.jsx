@@ -409,11 +409,8 @@ function FaqCta() {
 
 function Contact() {
   const handleContact = () => {
-    const params = new URLSearchParams({
-      cc: 'afaf.aderdoun@giz.de',
-      subject: "Question sur l'AMI INEFF",
-    });
-    window.location.href = `mailto:Mohamed-amine.faiz@giz.de?${params.toString()}`;
+    window.location.href =
+      'mailto:Mohamed-amine.faiz@giz.de?cc=afaf.aderdoun@giz.de&subject=Demande d’information – AMI INEFF x We4She';
   };
 
   return (
