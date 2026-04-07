@@ -436,9 +436,13 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
-        <h3>À propos</h3>
+        <h3>À propos de WE4SHE</h3>
         <p>
           <strong>WE4SHE est une</strong> association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
+        </p>
+        <h3>À propos du projet INEFF</h3>
+        <p>
+          Le projet INEFF « Inclusion économique des femmes dans les secteurs du futur » est mis en œuvre par la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ), en partenariat avec le Ministère de l’Inclusion Économique, de la Petite Entreprise, de l’Emploi et des Compétences, et financé par le Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) et l’Union Européenne.
         </p>
         <p className="copyright">
           © 2026 GIZ - Tous droits réservés. Developed by{' '}
@@ -524,6 +528,12 @@ function CandidaturePage() {
         nextErrors.professionalEmail = 'Ce champ est obligatoire.';
       } else if (!/^\S+@\S+\.\S+$/.test(formData.professionalEmail)) {
         nextErrors.professionalEmail = 'Adresse email invalide.';
+      }
+      const normalizedPhoneNumber = formData.phoneNumber.replace(/\D/g, '');
+      if (!formData.phoneNumber.trim()) {
+        nextErrors.phoneNumber = 'Ce champ est obligatoire.';
+      } else if (!/^(05|06|07)\d{8}$/.test(normalizedPhoneNumber)) {
+        nextErrors.phoneNumber = 'Numéro invalide. Entrez 10 chiffres commençant par 05, 06 ou 07.';
       }
       if (!formData.directionCommitment) nextErrors.directionCommitment = 'Choisissez une option.';
     }
@@ -744,13 +754,21 @@ function CandidaturePage() {
                   />
                 </FormField>
 
-                <FormField label="Numéro de téléphone" htmlFor="phoneNumber">
+                <FormField
+                  label="Numéro de téléphone"
+                  required
+                  // hint="Format attendu: 10 chiffres, commence par 05, 06 ou 07."
+                  error={errors.phoneNumber}
+                  htmlFor="phoneNumber"
+                >
                   <input
                     id="phoneNumber"
                     className="text-input"
                     type="tel"
                     autoComplete="tel"
-                    inputMode="tel"
+                    inputMode="numeric"
+                    pattern="(05|06|07)[0-9]{8}"
+                    maxLength={14}
                     value={formData.phoneNumber}
                     onChange={(e) => setField('phoneNumber', e.target.value)}
                   />

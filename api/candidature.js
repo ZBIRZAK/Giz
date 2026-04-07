@@ -14,6 +14,11 @@ function escapeHtml(value = '') {
     .replace(/'/g, '&#039;');
 }
 
+function isValidMoroccanPhone(phoneNumber = '') {
+  const normalized = String(phoneNumber).replace(/\D/g, '');
+  return /^(05|06|07)\d{8}$/.test(normalized);
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -29,6 +34,12 @@ export default async function handler(req, res) {
 
   try {
     const data = req.body || {};
+    if (!isValidMoroccanPhone(data.phoneNumber)) {
+      return res.status(400).json({
+        ok: false,
+        message: 'Numéro invalide. Entrez 10 chiffres commençant par 05, 06 ou 07.',
+      });
+    }
 
     const html = `
       <h2>Nouvelle candidature AMI INEFF</h2>
