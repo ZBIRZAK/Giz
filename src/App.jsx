@@ -469,7 +469,7 @@ function Footer() {
         
         <h3>À propos de WE4SHE</h3>
         <p>
-          <strong>WE4SHE </strong>est une association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
+          <strong>We4She </strong>est une association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
         </p>
 
                 <p className="copyright">
