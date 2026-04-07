@@ -467,7 +467,7 @@ function Footer() {
           <strong>Le projet INEFF</strong> « Inclusion économique des femmes dans les secteurs du futur » est mis en œuvre par la Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ), en partenariat avec le Ministère de l’Inclusion Économique, de la Petite Entreprise, de l’Emploi et des Compétences, et financé par le Ministère fédéral allemand de la Coopération économique et du Développement (BMZ) et l’Union Européenne.
         </p>
         
-        <h3>À propos de WE4SHE</h3>
+        <h3>À propos de We4She</h3>
         <p>
           <strong>We4She </strong>est une association marocaine ayant pour mission d’améliorer la représentativité des femmes dans le milieu de l’entreprise et dans les instances dirigeantes. Son réseau œuvre pour l’autonomisation des femmes marocaines et la promotion de l’égalité de genre au sein des entreprises et des organisations, et développe des actions de sensibilisation, de formation, d’accompagnement et de plaidoyer en faveur d’une participation accrue des femmes aux instances de décision.
         </p>
