@@ -369,7 +369,7 @@ function ActionsAndPractical() {
           <h2>Informations pratiques</h2>
           <h3 className="icon-title"><span aria-hidden="true">📅</span>Calendrier</h3>
           <ul className="info-lines info-lines-bulleted">
-            <li>Clôture de la période de session d’intérêt: <strong>Le 30 mai 2026</strong></li>
+            <li>Clôture de l’Appel à Manifestation d’intérêt : <strong>Le 30 mai 2026</strong></li>
           </ul>
           <h3 className="icon-title"><span aria-hidden="true">📍</span>Format du programme</h3>
           <ul className="info-lines info-lines-bulleted">
