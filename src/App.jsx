@@ -229,7 +229,7 @@ function Hero() {
               <strong>Scale :</strong> dynamique entre pairs et cadre structuré pour ancrer des résultats mesurables et durables
             </li>
           </ol>
-          <p className="deadline">Candidatures ouvertes jusqu’au <strong>30 mai 2026</strong>.</p>
+          <p className="deadline">Candidatures ouvertes jusqu’au <strong>15 juin 2026</strong>.</p>
           <Link className="btn btn-primary" to="/candidature" onClick={() => trackEvent('cta_click', { source: 'hero' })}>
             Postuler maintenant
           </Link>
@@ -369,7 +369,7 @@ function ActionsAndPractical() {
           <h2>Informations pratiques</h2>
           <h3 className="icon-title"><span aria-hidden="true">📅</span>Calendrier</h3>
           <ul className="info-lines info-lines-bulleted">
-            <li>Clôture de l’Appel à Manifestation d’intérêt : <strong>Le 30 mai 2026</strong></li>
+            <li>Clôture de l’Appel à Manifestation d’intérêt : <strong>15 juin 2026</strong></li>
           </ul>
           <h3 className="icon-title"><span aria-hidden="true">📍</span>Format du programme</h3>
           <ul className="info-lines info-lines-bulleted">
